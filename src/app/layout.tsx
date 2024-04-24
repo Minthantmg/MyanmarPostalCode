@@ -5,6 +5,9 @@ import "./globals.css";
 import Nav from "../app/components/_nav";
 import SideBar from "../app/(home)/sideBar";
 import { useState } from "react";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+
+const queryClient = new QueryClient();
 
 const metadata: Metadata = {
   title: "Create Next App",
@@ -24,13 +27,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="overflow-hidden">
-        <Nav toggleDisplay={toggleDisplay} />
-        {display && (
-          <div className="sm:hidden">
-            <SideBar />
-          </div>
-        )}
-        <div>{children}</div>
+        <QueryClientProvider client={queryClient}>
+          <Nav toggleDisplay={toggleDisplay} />
+          {display && (
+            <div className="sm:hidden">
+              <SideBar />
+            </div>
+          )}
+          <div>{children}</div>
+        </QueryClientProvider>
       </body>
     </html>
   );
