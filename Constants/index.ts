@@ -1,3 +1,5 @@
+import { Postal } from "@/app/(home)/columns";
+
 export const cities = [
   {
     id: 1,
