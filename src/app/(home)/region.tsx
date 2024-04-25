@@ -1,21 +1,22 @@
 "use client";
 import React from "react";
 import { useRegion } from "../../../hooks/useRegion";
+import { columns } from "./columns";
+import { DataTable } from "./data-table";
 
 const region = () => {
   const { getRegionListHook } = useRegion();
   const { data: region, isLoading, isError, isSuccess } = getRegionListHook();
-  console.log(region?.data);
+  console.log(region?.data[0].en.qv_tract);
+
   return (
     <div>
       {isSuccess && (
-        <>
-          {/* {region.slice(0, 10).map((item: string) => (
-            <>
-              <div></div>
-            </>
-          ))} */}
-        </>
+        <div>
+          <div className="container sm:mx-auto">
+            <DataTable columns={columns} data={region.data} />
+          </div>
+        </div>
       )}
     </div>
   );
