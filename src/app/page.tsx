@@ -4,11 +4,11 @@ import Region from "./(home)/region";
 
 const page = () => {
   return (
-    <div>
-      <div className="w-2/5 hidden sm:block">
+    <div className="flex">
+      <div className="w-1/6 hidden sm:block">
         <SideBar />
       </div>
-      <div className="w-3/5 sm:w-full">
+      <div className="sm:w-5/6">
         <Region />
       </div>
     </div>
