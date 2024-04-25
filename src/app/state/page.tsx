@@ -5,6 +5,7 @@ import { columns } from "./columns";
 import { DataTable } from "./data-table";
 
 const region = () => {
+  // eslint-disable-next-line react-hooks/rules-of-hooks
   const { getRegionListHook } = useRegion();
   const { data: region, isLoading, isError, isSuccess } = getRegionListHook();
 
