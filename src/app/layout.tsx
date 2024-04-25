@@ -26,7 +26,7 @@ export default function RootLayout({
   };
   return (
     <html lang="en">
-      <body className="overflow-hidden">
+      <body className="sm:overflow-hidden">
         <QueryClientProvider client={queryClient}>
           <Nav toggleDisplay={toggleDisplay} />
           {display && (
