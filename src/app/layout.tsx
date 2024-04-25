@@ -24,17 +24,25 @@ export default function RootLayout({
   const toggleDisplay = () => {
     setDisplay(!display);
   };
+
+  const closeDisplay = () => {
+    setDisplay(false);
+  };
+
   return (
     <html lang="en">
       <body className="sm:overflow-hidden">
         <QueryClientProvider client={queryClient}>
           <Nav toggleDisplay={toggleDisplay} />
-          {display && (
-            <div className="sm:hidden">
-              <SideBar />
-            </div>
+          {display ? (
+            <>
+              <div className="sm:hidden">
+                <SideBar closeDisplay={closeDisplay} />
+              </div>
+            </>
+          ) : (
+            <div>{children}</div>
           )}
-          <div>{children}</div>
         </QueryClientProvider>
       </body>
     </html>
