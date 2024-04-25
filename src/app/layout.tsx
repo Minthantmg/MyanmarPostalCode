@@ -3,9 +3,9 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "../app/components/_nav";
-import SideBar from "../app/(home)/sideBar";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import Menu from "./components/_menu";
 
 const queryClient = new QueryClient();
 
@@ -29,19 +29,21 @@ export default function RootLayout({
     setDisplay(false);
   };
 
+  console.log(display);
+
   return (
     <html lang="en">
-      <body className="sm:overflow-hidden">
+      <body>
         <QueryClientProvider client={queryClient}>
-          <Nav toggleDisplay={toggleDisplay} />
           {display ? (
             <>
-              <div className="sm:hidden">
-                <SideBar closeDisplay={closeDisplay} />
-              </div>
+              <Menu closeDisplay={closeDisplay} />
             </>
           ) : (
-            <div>{children}</div>
+            <>
+              <Nav toggleDisplay={toggleDisplay} />
+              <div className="sm:px-32 px-4">{children}</div>
+            </>
           )}
         </QueryClientProvider>
       </body>

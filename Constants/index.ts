@@ -1,4 +1,4 @@
-import { Postal } from "@/app/(home)/columns";
+import { Postal } from "@/app/state/columns";
 
 export const cities = [
   {

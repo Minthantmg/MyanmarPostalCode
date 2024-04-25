@@ -1,8 +1,8 @@
 import React from "react";
-import Home from "./home-page/page";
+import Region from "../state/page";
 
 const page = () => {
-  return <Home />;
+  return <div>home</div>;
 };
 
 export default page;

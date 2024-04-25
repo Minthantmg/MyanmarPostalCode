@@ -7,7 +7,6 @@ import { DataTable } from "./data-table";
 const region = () => {
   const { getRegionListHook } = useRegion();
   const { data: region, isLoading, isError, isSuccess } = getRegionListHook();
-  console.log(region?.data[0].en.qv_tract);
 
   return (
     <div>
