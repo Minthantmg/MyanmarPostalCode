@@ -1,6 +1,7 @@
 "use client";
 
 import { ColumnDef } from "@tanstack/react-table";
+import { ArrowUpDown, MoreHorizontal } from "lucide-react";
 
 export type Postal = {
   id: string;
@@ -11,21 +12,21 @@ export type Postal = {
 
 export const columns: ColumnDef<Postal>[] = [
   {
+    accessorKey: "qv_tract",
+    header: "Quarters",
+    cell: ({ row }) => {
+      const postal_data = row.original;
+      // @ts-ignore
+      return <div>{postal_data.en?.qv_tract}</div>;
+    },
+  },
+  {
     accessorKey: "town_township",
     header: "Township",
     cell: ({ row }) => {
       const postal_data = row.original;
       // @ts-ignore
       return <div>{postal_data.en?.town_township}</div>;
-    },
-  },
-  {
-    accessorKey: "qv_tract",
-    header: "Qarters",
-    cell: ({ row }) => {
-      const postal_data = row.original;
-      // @ts-ignore
-      return <div>{postal_data.en?.qv_tract}</div>;
     },
   },
   {
