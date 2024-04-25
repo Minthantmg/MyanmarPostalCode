@@ -1,13 +1,25 @@
 import React from "react";
 import { cities } from "../../../Constants";
+import Link from "next/link";
+import { closeDisplayProps } from "../types";
 
-const sideBar = () => {
+const sideBar = ({ closeDisplay }: closeDisplayProps) => {
   return (
-    <div className="border-r-2 min-h-screen w-1/3 sm:w-full">
+    <div className="border-r-2 h-fit sm:min-h-screen">
       {cities.map((city) => (
-        <div key={city.id} className="border-b-2 p-2 cursor-pointer">
-          {city.name}
-        </div>
+        <Link
+          legacyBehavior={true}
+          key={city.id}
+          href=""
+          className={`py-4 px-4 border-b flex items-start text-sm hover:no-underline hover:bg-gray-200`}
+        >
+          <div
+            className="border-b-2 p-2 cursor-pointer flex flex-col justify-center items-center"
+            onClick={closeDisplay}
+          >
+            {city.name}
+          </div>
+        </Link>
       ))}
     </div>
   );
