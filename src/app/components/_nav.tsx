@@ -2,6 +2,8 @@ import React, {useEffect} from "react";
 import {Menu} from "lucide-react";
 import {useRouter} from "next/navigation";
 import {displayProps} from "../types";
+import Image from "next/image";
+import logo from "../../../public/myanmar.png"
 
 const _nav = ({toggleDisplay}: displayProps) => {
     const router = useRouter();
@@ -29,13 +31,15 @@ const _nav = ({toggleDisplay}: displayProps) => {
         router.prefetch("/about");
     }, []);
     return (
-        <div className="flex justify-between items-center border-b-2 p-4 px-4 sm:px-32">
-            <div className="cursor-pointer" onClick={gotoHome}>
-                <span className="text-xl">M</span><span className="text-[10px]">yanmar</span>
+        <div className="flex justify-between fixed items-center border-b-2 p-4 px-4 sm:px-32 w-full bg-white">
+            <div className="cursor-pointer flex justify-center items-center" onClick={gotoHome}>
+                <Image src={logo} alt="logo" className="w-8 h-8"/>
+                <span className="text-xl ml-1">M</span>
+                <span className="text-base pt-1">yanmar</span>
                 <span className="text-xl ml-1">P</span>
-                <span className="text-[10px]">ostal</span>
+                <span className="text-base pt-1">ostal</span>
                 <span className="text-xl ml-1">C</span>
-                <span className="text-[10px]">ode</span>
+                <span className="text-base pt-1">ode</span>
             </div>
             <div className="gap-5 flex">
                 <div onClick={gotoHome} className="cursor-pointer hidden sm:block">
