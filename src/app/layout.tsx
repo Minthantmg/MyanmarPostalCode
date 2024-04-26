@@ -1,8 +1,8 @@
 "use client";
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import "./globals.css";
 import Nav from "../app/components/_nav";
+import Footer from "../app/components/_footer";
 import { useState } from "react";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import Menu from "./components/_menu";
@@ -29,8 +29,7 @@ export default function RootLayout({
     setDisplay(false);
   };
 
-  console.log(display);
-
+  // className="sm:px-32 px-4"
   return (
     <html lang="en">
       <body>
@@ -42,7 +41,8 @@ export default function RootLayout({
           ) : (
             <>
               <Nav toggleDisplay={toggleDisplay} />
-              <div className="sm:px-32 px-4">{children}</div>
+              {children}
+              <Footer />
             </>
           )}
         </QueryClientProvider>
