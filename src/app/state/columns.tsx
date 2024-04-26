@@ -4,10 +4,13 @@ import {ColumnDef} from "@tanstack/react-table";
 
 export interface Postal {
     id: string;
+    en: object
     town_township: string;
     qv_tract : string;
     postal_code: string;
+    tsp_code : string
 }
+
 
 
 export const columns: ColumnDef<Postal>[] = [
@@ -32,5 +35,10 @@ export const columns: ColumnDef<Postal>[] = [
     {
         accessorKey: "postal_code",
         header: "PostalCode"
+    },
+
+    {
+        accessorKey: "tsp_code",
+        header: "TownCode"
     },
 ];
