@@ -1,32 +1,19 @@
 "use client";
 
 import {ColumnDef} from "@tanstack/react-table";
-import {ArrowUpDown} from "lucide-react";
-import {Button} from "@/components/ui/button";
 
 export interface Postal {
     id: string;
-    "en.town_township": string;
-    "en.qv_tract" : string;
+    town_township: string;
+    qv_tract : string;
     postal_code: string;
 }
 
 
 export const columns: ColumnDef<Postal>[] = [
     {
-        accessorKey: "en.qv_tract",
-        header: ({column}) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Quarters
-                    <ArrowUpDown className="ml-2 h-4 w-4"/>
-                </Button>
-
-            )
-        },
+        accessorKey: "qv_tract",
+        header : "Quarters",
         cell: ({row}) => {
             const postal_data = row.original;
             // @ts-ignore
@@ -34,19 +21,8 @@ export const columns: ColumnDef<Postal>[] = [
         },
     },
     {
-        accessorKey: "en.town_township",
-        header: ({column}) => {
-            return (
-                <Button
-                    variant="ghost"
-                    onClick={() => column.toggleSorting(column.getIsSorted() === "asc")}
-                >
-                    Township
-                    <ArrowUpDown className="ml-2 h-4 w-4"/>
-                </Button>
-
-            )
-        },
+        accessorKey: "town_township",
+        header: "Township",
         cell: ({row}) => {
             const postal_data = row.original;
             // @ts-ignore
@@ -55,6 +31,6 @@ export const columns: ColumnDef<Postal>[] = [
     },
     {
         accessorKey: "postal_code",
-        header: "Township"
+        header: "PostalCode"
     },
 ];
