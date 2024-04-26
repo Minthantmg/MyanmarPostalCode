@@ -23,7 +23,7 @@ import {
     TableRow,
 } from "@/components/ui/table";
 import {Button} from "@/components/ui/button";
-import React from "react";
+import React, {useState} from "react";
 
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
@@ -38,6 +38,7 @@ export function DataTable<TData, TValue>({
     const [columnFilters, setColumnFilters] = React.useState<ColumnFiltersState>(
         []
     );
+    const [searchText, setSearchText] = useState("");
 
     const table = useReactTable({
         data,
@@ -58,10 +59,8 @@ export function DataTable<TData, TValue>({
         <div>
             <div className="flex items-center py-4">
                 <Input
-                    placeholder="Filter PostalCode..."
-                    value={
-                        (table.getColumn("postal_code")?.getFilterValue() as string) ?? ""
-                    }
+                    placeholder="Filter Town Township..."
+                    value={table.getColumn("postal_code")?.getFilterValue() as string ?? ""}
                     onChange={(event: any) =>
                         table.getColumn("postal_code")?.setFilterValue(event.target.value)
                     }
