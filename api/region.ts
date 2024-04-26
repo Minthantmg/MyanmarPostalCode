@@ -12,3 +12,4 @@ export const getRegionList = async () => {
     throw e;
   }
 };
+
