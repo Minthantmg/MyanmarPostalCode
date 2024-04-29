@@ -79,9 +79,9 @@ const page = () => {
                             <span className="pr-4">Read Docs</span>
                             <Book/>
                         </button>
-                        <button className="flex justify-between bg-yellow-400 px-6 py-3 rounded-sm text-white"
+                        <button className="flex justify-between bg-yellow-400 px-12 py-3 rounded-sm text-white"
                                 onClick={gotoState}>
-                            <span className="pr-4">View Demo</span>
+                            <span className="pr-4">Demo</span>
                             <FileJson/>
                         </button>
                     </div>
