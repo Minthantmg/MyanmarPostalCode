@@ -33,7 +33,23 @@ const page = () => {
     };
 
     const data = [
-        {id: 1, title: '...', price: '...', category: '...', description: '...', image: '...'},
+        {
+            "en": {
+                "region": "...,",
+                "town_township": "...,",
+                "qv_tract": "...,"
+            },
+            "mm": {
+                "region": "...,",
+                "town_township": "...,",
+                "qv_tract": "...,"
+            },
+            "_id": "...,",
+            "tsp_code": "...,",
+            "region_code": "...,",
+            "postal_code": "...,",
+            "qv_code": "...,"
+        },
     ];
 
     return (
@@ -102,10 +118,26 @@ const page = () => {
                     <span>{`{`}
                         <span>
                           {data.map((item) => (
-                              <div key={item.id}>  {/* Add a unique key for each item */}
-                                  <h2>title : {item.title}</h2>
-                                  <p>price : {item.price}</p>
-                                  {/* Add other elements to display category, description, and image */}
+                              <div key={item.postal_code}>
+                                  <h2 className="flex flex-col">en :
+                                      <span className="flex flex-col">{`{`}</span>
+                                      <span>region :{item.en.region}</span>
+                                      <span>town_township :{item.en.town_township}</span>
+                                      <span>qv_tract :{item.en.qv_tract}</span>
+                                      {`}`}
+                                  </h2>
+                                  <h2 className="flex flex-col">mm :
+                                      <span className="flex flex-col">{`{`}</span>
+                                      <span>region :{item.en.region}</span>
+                                      <span>town_township :{item.en.town_township}</span>
+                                      <span>qv_tract :{item.en.qv_tract}</span>
+                                      {`}`}
+                                  </h2>
+                                  <p>_id : {item._id}</p>
+                                  <p>tsp_code : {item.tsp_code}</p>
+                                  <p>region_code : {item.region_code}</p>
+                                  <p>postal_code : {item.postal_code}</p>
+                                  <p>qv_code : {item.qv_code}</p>
                               </div>
                           ))}
                         </span>
