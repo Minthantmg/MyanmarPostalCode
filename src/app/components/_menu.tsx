@@ -10,16 +10,16 @@ const Menu = ({ closeDisplay }: closeDisplayProps) => {
           <X />
         </div>
         <div className="flex flex-col items-center justify-center pt-52">
-          <a href="" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
+          <a href="/home-page" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
             Home
           </a>
-          <a href="" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
-            State
+          <a href="/state" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
+            Demo
           </a>
-          <a href="" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
-            Service
+          <a href="/docs" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
+            Docs
           </a>
-          <a href="" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
+          <a href="/about" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
             About
           </a>
         </div>
