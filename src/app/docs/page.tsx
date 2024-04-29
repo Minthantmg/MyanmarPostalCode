@@ -3,14 +3,20 @@ import React, {useState} from "react";
 import {Box, Copy} from "lucide-react";
 import Check from "../../../public/check.png"
 import Image from "next/image";
+import * as url from "url";
 
 const page = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [copied, setCopied] = useState(false);
     // eslint-disable-next-line react-hooks/rules-of-hooks
     const [copiedAll, setCopiedAll] = useState(false);
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [outputAll, setOutputAll] = useState(false)
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [output, setOutput] = useState(false)
+
     const singleText = 'https://myanmar-postal-code.vercel.app/api/data/myanmar?region=01';
-    const allStateText = 'https://myanmar-postal-code.vercel.app/api/data/myanmar/regions';
+    const allText =  "https://myanmar-postal-code.vercel.app/api/data/myanmar/regions"
 
     const handleCopy = async () => {
         try {
@@ -24,7 +30,7 @@ const page = () => {
 
     const handleCopyAll = async () => {
         try {
-            await navigator.clipboard.writeText(allStateText);
+            await navigator.clipboard.writeText(allText);
             setCopiedAll(true);
         } catch (error) {
         } finally {
@@ -32,25 +38,40 @@ const page = () => {
         }
     };
 
+    const handleOutputAll = () => {
+        setOutputAll(!outputAll)
+    }
+
+    const handleOutput = () => {
+        setOutput(!output)
+    }
+
     const data = [
         {
             "en": {
-                "region": "...,",
-                "town_township": "...,",
-                "qv_tract": "...,"
+                "region": "'...',",
+                "town_township": "'...',",
+                "qv_tract": "'...',"
             },
             "mm": {
-                "region": "...,",
-                "town_township": "...,",
-                "qv_tract": "...,"
+                "region": "'...',",
+                "town_township": "'...',",
+                "qv_tract": "'...',"
             },
-            "_id": "...,",
-            "tsp_code": "...,",
-            "region_code": "...,",
-            "postal_code": "...,",
-            "qv_code": "...,"
+            "_id": "'...',",
+            "tsp_code": "'...',",
+            "region_code": "'...',",
+            "postal_code": "'...',",
+            "qv_code": "'...',"
         },
     ];
+
+    const dataAll = [
+        [
+            "15",
+            "Naypyitaw Union Territory"
+        ],
+    ]
 
     return (
         <div className="w-full font-poppin">
@@ -74,49 +95,36 @@ const page = () => {
                 <div className="text-black text-lg leading-tight">
                     Get all regions
                 </div>
-                <div className="sm:w-3/5 w-[365px]">
-                    <div className="mockup-code">
-                        <pre
-                            className="flex justify-between"><code
-                            className="text-wrap mr-4 sm:mr-0">{allStateText}</code>
+                <div className="sm:w-4/5 w-[365px]">
+                    <div className="flex bg-gray-800 text-gray-400 px-4 py-2 rounded-sm">
+                        <div className="w-2/3 text-justify">
+                            {allText}
+                        </div>
+                        <div className="w-1/3 flex justify-end items-center">
                             {copiedAll ? (
                                 <>
                                     <Image src={Check} alt="" className="w-6 h-6 ml-4 sm:ml-0 mr-1 sm:mr-0"/>
                                 </>
                             ) : (
-                                <div onClick={handleCopyAll}
+                                <div onClick={handleCopy}
                                      className="cursor-pointer ml-4 sm:ml-0 mr-1 sm:mr-0 w-6 h-6">
                                     <Copy/>
                                 </div>
                             )}
-                        </pre>
+                        </div>
                     </div>
                 </div>
-
-                <div className="text-black text-lg leading-tight">
-                    Get a single region
+                <div onClick={handleOutputAll}>
+                    <button className="border border-green-300 text-black hover:bg-green-300 hover:text-white
+                    px-4 py-2 rounded-sm">Output
+                    </button>
                 </div>
-                <div className="sm:w-3/5 w-[365px] pb-14">
-                    <div className="mockup-code">
-                        <pre
-                            className="flex justify-between"><code
-                            className="text-wrap mr-4 sm:mr-0">{singleText}</code>
-                            {copied ? (
-                                <>
-                                    <Image src={Check} alt="" className="w-6 h-6 ml-4 sm:ml-0 mr-1 sm:mr-0"/>
-                                </>
-                            ) : (
-                                <div onClick={handleCopy} className="cursor-pointer ml-4 sm:ml-0 mr-1 sm:mr-0 w-6 h-6">
-                                    <Copy/>
-                                </div>
-                            )}
-                        </pre>
-                    </div>
-                </div>
-                <div className="flex flex-col">
-                    <span>[</span>
-                    <span>{`{`}
-                        <span>
+                {outputAll && (
+                    <>
+                        <div className="flex flex-col">
+                            <span>[</span>
+                            <span>{`{`}
+                                <span>
                           {data.map((item) => (
                               <div key={item.postal_code}>
                                   <h2 className="flex flex-col">en :
@@ -141,8 +149,56 @@ const page = () => {
                               </div>
                           ))}
                         </span>
-                        {`}`} </span>
-                    <span>]</span>
+                                {`}`} </span>
+                            <span>]</span>
+                        </div>
+                    </>
+                )}
+                <div className="text-black text-lg leading-tight">
+                    Get a single region
+                </div>
+                <div className="sm:w-4/5 w-[365px]">
+                    <div className="flex bg-gray-800 text-gray-400 px-4 py-2 rounded-sm">
+                        <div className="w-2/3 text-justify">
+                            {singleText}
+                        </div>
+                        <div className="w-1/3 flex justify-end items-center">
+                            {copied ? (
+                                <>
+                                    <Image src={Check} alt="" className="w-6 h-6 ml-4 sm:ml-0 mr-1 sm:mr-0"/>
+                                </>
+                            ) : (
+                                <div onClick={handleCopy}
+                                     className="cursor-pointer ml-4 sm:ml-0 mr-1 sm:mr-0 w-6 h-6">
+                                    <Copy/>
+                                </div>
+                            )}
+                        </div>
+                    </div>
+                </div>
+                <div onClick={handleOutput}>
+                    <button className="border border-green-300 text-black hover:bg-green-300 hover:text-white
+                    px-4 py-2 rounded-sm">Output
+                    </button>
+                </div>
+                <div className="pb-14">
+                    {output && (
+                        <>
+                            <div className="flex flex-col">
+                                <span>[</span>
+                                <span>[</span>
+                                <span>
+                            {dataAll.map((item) => (
+                                <div key="1" className="flex flex-col">
+                                    {item}
+                                </div>
+                            ))}
+                            </span>
+                                <span> ]</span>
+                                <span>]</span>
+                            </div>
+                        </>
+                    )}
                 </div>
             </div>
         </div>
