@@ -32,6 +32,10 @@ const page = () => {
         }
     };
 
+    const data = [
+        {id: 1, title: '...', price: '...', category: '...', description: '...', image: '...'},
+    ];
+
     return (
         <div className="w-full font-poppin">
             <div className="sm:px-36 px-8 grid gap-y-10">
@@ -57,7 +61,8 @@ const page = () => {
                 <div className="sm:w-3/5 w-[365px]">
                     <div className="mockup-code">
                         <pre
-                            className="flex justify-between"><code className="text-wrap mr-4 sm:mr-0">{allStateText}</code>
+                            className="flex justify-between"><code
+                            className="text-wrap mr-4 sm:mr-0">{allStateText}</code>
                             {copiedAll ? (
                                 <>
                                     <Image src={Check} alt="" className="w-6 h-6 ml-4 sm:ml-0 mr-1 sm:mr-0"/>
@@ -78,7 +83,8 @@ const page = () => {
                 <div className="sm:w-3/5 w-[365px] pb-14">
                     <div className="mockup-code">
                         <pre
-                            className="flex justify-between"><code className="text-wrap mr-4 sm:mr-0">{singleText}</code>
+                            className="flex justify-between"><code
+                            className="text-wrap mr-4 sm:mr-0">{singleText}</code>
                             {copied ? (
                                 <>
                                     <Image src={Check} alt="" className="w-6 h-6 ml-4 sm:ml-0 mr-1 sm:mr-0"/>
@@ -90,6 +96,21 @@ const page = () => {
                             )}
                         </pre>
                     </div>
+                </div>
+                <div className="flex flex-col">
+                    <span>[</span>
+                    <span>{`{`}
+                        <span>
+                          {data.map((item) => (
+                              <div key={item.id}>  {/* Add a unique key for each item */}
+                                  <h2>title : {item.title}</h2>
+                                  <p>price : {item.price}</p>
+                                  {/* Add other elements to display category, description, and image */}
+                              </div>
+                          ))}
+                        </span>
+                        {`}`} </span>
+                    <span>]</span>
                 </div>
             </div>
         </div>
