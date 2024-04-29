@@ -2,7 +2,7 @@ import React from "react";
 
 const page = () => {
     return (
-        <div className="grid gap-y-6 sm:pt-28 sm:px-40 pt-20 px-6 text-justify">
+        <div className="grid gap-y-6 sm:pt-28 sm:px-40 pt-20 sm:pb-7 px-6 text-justify">
             <div className="text-xl font-bold font-poppin">
                 About Us
             </div>
