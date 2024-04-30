@@ -10,7 +10,7 @@ const region = () => {
     const {data: region, isLoading, isError, isSuccess} = getRegionListHook();
 
     return (
-        <div>
+        <div className="h-screen">
             {isLoading && (
                 <div className="w-full h-screen">
                     <div className="flex justify-center items-center sm:pt-44">
