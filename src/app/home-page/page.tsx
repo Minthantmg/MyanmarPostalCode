@@ -1,7 +1,6 @@
 "use client"
 import React, {useEffect} from "react";
 import Image from "next/image";
-import logo from "../../../public/myanmar.png"
 import country from "../../../public/background.jpg"
 import {FileJson, Book} from 'lucide-react';
 import {useRouter} from "next/navigation";
