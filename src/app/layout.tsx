@@ -41,7 +41,9 @@ export default function RootLayout({
             ) : (
                 <>
                     <Nav toggleDisplay={toggleDisplay}/>
-                    {children}
+                    <div>
+                        {children}
+                    </div>
                     <Footer/>
                 </>
             )}
