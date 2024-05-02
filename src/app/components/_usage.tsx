@@ -195,17 +195,17 @@ const _Usage = () => {
                                            <h2 className="flex flex-col">
                                                <span className="ml-4">en :</span>
                                                <span className="flex flex-col ml-12">{`{`}</span>
-                                               <span className="ml-16">region : {item.en.region}</span>
-                                               <span className="ml-16">town_township :{item.en.town_township}</span>
-                                               <span className="ml-16">qv_tract :{item.en.qv_tract}</span>
+                                               <span className="ml-16">region : {item.en_region}</span>
+                                               <span className="ml-16">town_township :{item.en_town_township}</span>
+                                               <span className="ml-16">qv_tract :{item.en_qv_tract}</span>
                                                <span className="ml-12">{`}`}</span>
                                            </h2>
                                            <h2 className="flex flex-col">
                                                <span className="ml-4">mm :</span>
                                                <span className="flex flex-col ml-12">{`{`}</span>
-                                               <span className="ml-16">region : {item.mm.region}</span>
-                                               <span className="ml-16">town_township :{item.mm.town_township}</span>
-                                               <span className="ml-16">qv_tract :{item.mm.qv_tract}</span>
+                                               <span className="ml-16">region : {item.mm_region}</span>
+                                               <span className="ml-16">town_township :{item.mm_town_township}</span>
+                                               <span className="ml-16">qv_tract :{item.mm_qv_tract}</span>
                                                <span className="ml-12">{`}`}</span>
                                            </h2>
                                            <p className="ml-4">_id : {item._id}</p>
