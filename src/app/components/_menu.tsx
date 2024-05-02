@@ -13,7 +13,7 @@ const Menu = ({ closeDisplay }: closeDisplayProps) => {
           <a href="/home-page" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
             Home
           </a>
-          <a href="/state" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
+          <a href="/demo" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
             Demo
           </a>
           <a href="/docs" className="mb-4 font-bold text-xl" onClick={closeDisplay}>
