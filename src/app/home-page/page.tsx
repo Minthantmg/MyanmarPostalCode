@@ -24,9 +24,9 @@ const page = () => {
         }, [router]
     )
     return (
-        <div className="w-full">
+        <div className="w-full min-h-screen">
             <div
-                className="sm:flex justify-center items-center sm:pt-24 pt-16 text-justify sm:px-44 sm:pb-[100px] pb-12">
+                className="sm:flex justify-center items-center sm:pt-10 pt-16 text-justify sm:px-44">
                 <div className="sm:w-1/2 p-6">
                     <div>
                         <div className="text-2xl font-bold font-poppin">
