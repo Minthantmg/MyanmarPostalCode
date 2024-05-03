@@ -1,69 +1,127 @@
 "use client";
-import React from "react";
+import React, {useState} from "react";
 import {useRegion} from "../../../hooks/useRegion";
 import {columns} from "./columns";
+import {myanColumns} from "./Myanmar/columnsMyan";
 import {DataTable} from "./data-table";
 import {
     DropdownMenu,
-    DropdownMenuCheckboxItem,
     DropdownMenuContent,
+    DropdownMenuRadioGroup,
+    DropdownMenuRadioItem,
+    DropdownMenuSeparator,
     DropdownMenuTrigger
 } from "@/components/ui/dropdown-menu";
 import {Button} from "@/components/ui/button";
-import {DropdownMenuCheckboxItemProps} from "@radix-ui/react-dropdown-menu";
 import Loading from "../components/_loading"
+import Error from "../components/_error"
+import {ChevronDown} from "lucide-react"
+import {MyanDataTable} from "@/app/demo/Myanmar/myanDataTable";
 
-type Checked = DropdownMenuCheckboxItemProps["checked"]
-
-const region = () => {
+const page = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [english, setEnglish] = React.useState<Checked>(true)
+    const [langData, setLangData] = useState("English")
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const [myanmar, setMyanmar] = React.useState<Checked>(false)
+    const [region, setRegion] = useState<string>("01")
     // eslint-disable-next-line react-hooks/rules-of-hooks
-    const {getRegionListHook} = useRegion();
-    const {data: region, isLoading, isError, isSuccess} = getRegionListHook();
+    const [regionValue, setRegionValue] = useState("Naypyitaw Union Territory")
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const {useGetSingleRegionHook, useGetAllRegions} = useRegion();
+    const {
+        data: singleRegion, isLoading, isError, isSuccess
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+    } = useGetSingleRegionHook(region);
+    const {
+        data: regionList, isSuccess: allSuccess, isLoading: allLoading
+        // eslint-disable-next-line react-hooks/rules-of-hooks
+    } = useGetAllRegions();
+    // eslint-disable-next-line react-hooks/rules-of-hooks
+    const [position, setPosition] = React.useState("bottom")
 
     const handleEnglish = () => {
-        setMyanmar(false)
-        setEnglish(true)
+        setLangData("English")
     }
 
     const handleMyanmar = () => {
-        setEnglish(false)
-        setMyanmar(true)
+        setLangData("Myanmar")
     }
+
+    const handleRegionCodeSelection = (regionCode: any, regionName: any) => {
+        setRegion(regionCode)
+        setRegionValue(regionName)
+    };
 
     return (
         <div className="min-h-screen">
+            {isError && (<Error/>)}
             {isLoading && <Loading/>}
             {isSuccess && (
                 <div>
                     <div className="container sm:mx-auto pt-20">
-                        <div className="flex justify-end">
+                        <div className="flex justify-end gap-4">
+
                             <DropdownMenu>
                                 <DropdownMenuTrigger asChild>
-                                    <Button variant="outline">English</Button>
+                                    <Button variant="outline">
+                                        {allLoading ? (
+                                            <span className="loading loading-spinner loading-xs"></span>
+                                        ) : (
+                                            <>
+                                                {regionValue}
+                                                <div className="pt-1 pl-1">
+                                                    <ChevronDown/>
+                                                </div>
+                                            </>
+                                        )}
+                                    </Button>
+                                </DropdownMenuTrigger>
+                                {allSuccess && (
+                                    <DropdownMenuContent className="w-56">
+                                        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                                            {regionList?.map((item: any, index: number) => (
+                                                <div key={index}>
+                                                    <DropdownMenuRadioItem
+                                                        value={item.region_code}
+                                                        onClick={() => handleRegionCodeSelection(item.region_code, item.region)}>
+                                                        {item.region}
+                                                    </DropdownMenuRadioItem>
+                                                    {index < regionList.length - 1 && <DropdownMenuSeparator/>}
+                                                </div>
+                                            ))}
+                                        </DropdownMenuRadioGroup>
+                                    </DropdownMenuContent>
+                                )}
+                            </DropdownMenu>
+                            <DropdownMenu>
+                                <DropdownMenuTrigger asChild>
+                                    <Button variant="outline">
+                                        {langData}
+                                        <div className="pt-1 pl-1">
+                                            <ChevronDown/>
+                                        </div>
+                                    </Button>
                                 </DropdownMenuTrigger>
                                 <DropdownMenuContent className="w-56">
-                                    <DropdownMenuCheckboxItem
-                                        checked={english}
-                                        onCheckedChange={setEnglish}
-                                        onClick={handleEnglish}
-                                    >
-                                        English
-                                    </DropdownMenuCheckboxItem>
-                                    <DropdownMenuCheckboxItem
-                                        checked={myanmar}
-                                        onCheckedChange={setMyanmar}
-                                        onClick={handleMyanmar}
-                                    >
-                                        Myanmar
-                                    </DropdownMenuCheckboxItem>
+                                    <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                                        <DropdownMenuRadioItem
+                                            value="English"
+                                            onClick={() => handleEnglish()}>
+                                            English
+                                        </DropdownMenuRadioItem>
+                                        <DropdownMenuRadioItem
+                                            value="Myanmar"
+                                            onClick={() => handleMyanmar()}>
+                                            Myanmar
+                                        </DropdownMenuRadioItem>
+                                    </DropdownMenuRadioGroup>
                                 </DropdownMenuContent>
                             </DropdownMenu>
                         </div>
-                        <DataTable columns={columns} data={region.data}/>
+                        {langData === "Myanmar" ? (
+                            <MyanDataTable columns={myanColumns} data={singleRegion.data}/>
+                        ) : (
+                            <DataTable columns={columns} data={singleRegion.data}/>
+                        )}
                     </div>
                 </div>
             )}
@@ -71,4 +129,4 @@ const region = () => {
     );
 };
 
-export default region;
+export default page;
