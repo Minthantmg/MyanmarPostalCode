@@ -17,6 +17,7 @@ import Loading from "../components/_loading"
 import Error from "../components/_error"
 import {ChevronDown} from "lucide-react"
 import {MyanDataTable} from "@/app/demo/Myanmar/myanDataTable";
+import { ScrollArea } from "@/components/ui/scroll-area"
 
 const page = () => {
     // eslint-disable-next-line react-hooks/rules-of-hooks
@@ -76,19 +77,21 @@ const page = () => {
                                     </Button>
                                 </DropdownMenuTrigger>
                                 {allSuccess && (
-                                    <DropdownMenuContent className="w-56">
-                                        <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
-                                            {regionList?.map((item: any, index: number) => (
-                                                <div key={index}>
-                                                    <DropdownMenuRadioItem
-                                                        value={item.region_code}
-                                                        onClick={() => handleRegionCodeSelection(item.region_code, item.region)}>
-                                                        {item.region}
-                                                    </DropdownMenuRadioItem>
-                                                    {index < regionList.length - 1 && <DropdownMenuSeparator/>}
-                                                </div>
-                                            ))}
-                                        </DropdownMenuRadioGroup>
+                                    <DropdownMenuContent className="w-56 h-[310px]">
+                                        <ScrollArea className="h-[300px] w-56 rounded-md">
+                                            <DropdownMenuRadioGroup value={position} onValueChange={setPosition}>
+                                                {regionList?.map((item: any, index: number) => (
+                                                    <div key={index}>
+                                                        <DropdownMenuRadioItem
+                                                            value={item.region_code}
+                                                            onClick={() => handleRegionCodeSelection(item.region_code, item.region)}>
+                                                            {item.region}
+                                                        </DropdownMenuRadioItem>
+                                                        {index < regionList.length - 1 && <DropdownMenuSeparator/>}
+                                                    </div>
+                                                ))}
+                                            </DropdownMenuRadioGroup>
+                                        </ScrollArea>
                                     </DropdownMenuContent>
                                 )}
                             </DropdownMenu>
