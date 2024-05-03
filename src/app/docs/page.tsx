@@ -23,7 +23,7 @@ const page = () => {
                 </div>
                 <div>
                     <div className="font-bold text-2xl text-yellow-600">
-                        How to postal code work?
+                        How postal code work?
                     </div>
                     <div className="pt-6">
                         <Image src={detail} alt="detail_ing" />
