@@ -32,6 +32,9 @@ export default function RootLayout({
     // className="sm:px-32 px-4"
     return (
         <html lang="en">
+        <head>
+            <title>Myanmar Postal Code</title>
+        </head>
         <body>
         <QueryClientProvider client={queryClient}>
             {display ? (
