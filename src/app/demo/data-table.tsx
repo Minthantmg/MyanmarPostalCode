@@ -25,6 +25,7 @@ import {
 import {Button} from "@/components/ui/button";
 import React, {useState} from "react";
 
+
 interface DataTableProps<TData, TValue> {
     columns: ColumnDef<TData, TValue>[];
     data: TData[];
@@ -55,7 +56,7 @@ export function DataTable<TData, TValue>({
         <div>
             <div className="flex items-center py-4">
                 <Input
-                    placeholder="Filter Town Township..."
+                    placeholder="Filter Quaters..."
                     value={table.getColumn("en_qv_tract")?.getFilterValue() as string ?? ""}
                     onChange={(event: any) =>
                         table.getColumn("en_qv_tract")?.setFilterValue(event.target.value)
