@@ -10,8 +10,6 @@ export interface Postal {
     postal_code: string;
 }
 
-
-
 export const columns: ColumnDef<Postal>[] = [
     {
         accessorKey: "en_qv_tract",
