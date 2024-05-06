@@ -46,7 +46,7 @@ const _Endpoint = () => {
             <div className="text-black text-lg leading-tight">
                 Get all regions
             </div>
-            <div className="grid grid-cols-9 bg-gray-800 text-gray-400 px-4 py-2 sm:mr-[400px] rounded-sm">
+            <div className="grid grid-cols-9 bg-gray-800 text-gray-400 px-4 py-2 mr-6 sm:mr-[400px] rounded-sm">
                 <div className="col-span-7 break-words">
                     {allText}
                 </div>
@@ -91,7 +91,7 @@ const _Endpoint = () => {
             <div className="text-black text-lg leading-tight">
                 Get a single region
             </div>
-            <div className="grid grid-cols-9 bg-gray-800 text-gray-400 px-4 py-2 sm:mr-[400px] rounded-sm">
+            <div className="grid grid-cols-9 bg-gray-800 text-gray-400 px-4 py-2 mr-6 sm:mr-[400px] rounded-sm">
                 <div className="col-span-7 break-words">
                     {singleText}
                 </div>
@@ -108,7 +108,7 @@ const _Endpoint = () => {
                     )}
                 </div>
             </div>
-            <div className="border m-2 sm:mr-[400px]">
+            <div className="border m-2 sm:mr-[400px] mr-6">
                 <div className="flex border-b-2">
                     <div className="py-2 px-2 w-1/2 border-r-2">
                         <div>

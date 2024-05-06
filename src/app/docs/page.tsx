@@ -10,12 +10,12 @@ const page = () => {
 
     return (
         <div className="w-full font-poppin">
-            <div className="sm:px-36 px-8 grid gap-y-10">
+            <div className="sm:px-36 px-8 mr-10 sm:mr-0 grid gap-y-10">
                 <div className="sm:pt-28 pt-20">
                     <div className="font-bold text-2xl text-yellow-600">
                         How to use it?
                     </div>
-                    <div className="text-gray-400 sm:pt-8 sm:mr-10">
+                    <div className="text-gray-400 pt-4 sm:pt-8 sm:mr-10 mr-6 text-justify">
                         Myanmar Postal Code API can be used with any type of project that needs postal code and township
                         of myanmar in JSON format. you can use examples below to check how Myanmar Postal Code API works
                         and feel free to enjoy it in your awesome projects!
@@ -25,8 +25,8 @@ const page = () => {
                     <div className="font-bold text-2xl text-yellow-600">
                         How postal code work
                     </div>
-                    <div className="pt-6">
-                        <Image src={detail} alt="detail_ing" />
+                    <div className="pt-6 mr-6 sm:mr-0">
+                        <Image src={detail} alt="detail_img" />
                     </div>
                 </div>
                 <div className="font-bold text-2xl flex items-center gap-2">

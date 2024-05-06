@@ -125,7 +125,7 @@ const _Usage = () => {
 
             <div>
                 {Ajax && (
-                    <div className="bg-gray-800 text-gray-400 px-4 py-2 w-[365px] sm:w-[850px] rounded-sm">
+                    <div className="bg-gray-800 text-gray-400 px-4 py-2 w-[365px] sm:w-[850px] mr-6 sm:mr-0 rounded-sm">
                         <div className="flex justify-end m-2">
                             {copyAjax ? (
                                 <>

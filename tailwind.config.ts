@@ -18,9 +18,6 @@ const config = {
       },
     },
     extend: {
-      fontFamily:{
-        poppin: ["Poppins"],
-      },
       colors: {
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
@@ -77,7 +74,7 @@ const config = {
       },
     },
   },
-  plugins: [require("tailwindcss-animate"),require('daisyui')],
+  plugins: [require("tailwindcss-animate")],
 } satisfies Config
 
 export default config
